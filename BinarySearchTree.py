@@ -64,11 +64,6 @@ tree.add_node(Node(7))
 tree.add_node(Node(3))
 tree.add_node(Node(5))
 
-print(tree.head.data)
-print(tree.head.left.data)
-print(tree.head.left.left.data)
-print(tree.head.left.left.right.data)
-
 
 
 
