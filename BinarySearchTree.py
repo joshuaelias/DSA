@@ -50,8 +50,14 @@ class BinarySearchTree:
     def add_node(self, node):
         self.add_node_recursive(node, self.head)
 
+    # pending functions
+    def get_min(self):
+        return self.head
+
+    def get_max(self):
+        return self.head
+
     def print_tree(self):
-        # adjust to return the tree, this is currently only boilerplate
         return self.head
 
 
@@ -63,8 +69,3 @@ tree.add_node(Node(16))
 tree.add_node(Node(7))
 tree.add_node(Node(3))
 tree.add_node(Node(5))
-
-
-
-
-
