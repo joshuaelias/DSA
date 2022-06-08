@@ -21,12 +21,6 @@ class BinarySearchTree:
 
             self.head = node
 
-    def print_head_data(self):
-        if self.head:
-            print(self.head.data)
-        else:
-            raise Exception('List is empty')
-
     def add_node_recursive(self, node, head=None):
         if head is None:
             head = self.head
@@ -50,22 +44,66 @@ class BinarySearchTree:
     def add_node(self, node):
         self.add_node_recursive(node, self.head)
 
-    # pending functions
-    def get_min(self):
-        return self.head
+    def get_min(self, head=None):
+        if head is None:
+            head = self.head
 
-    def get_max(self):
-        return self.head
+        if head:
+            while head.left:
+                head = head.left
+            return head.data
+        else:
+            self.raise_exception('List is empty')
 
-    def print_tree(self):
-        return self.head
+    def get_max(self, head=None):
+        if head is None:
+            head = self.head
+
+        if head:
+            while head.right:
+                head = head.right
+            return head.data
+        else:
+            self.raise_exception('List is empty')
+
+    def raise_exception(self, message):
+        raise Exception(message)
+
+    def exists(self, value):
+        if self.head is None:
+            self.raise_exception('List is empty')
+
+        head = self.head
+        while head.data != value:
+            if value >= head.data:
+                if head.right:
+                    head = head.right
+                else:
+                    return False
+
+            if value < head.data:
+                if head.left:
+                    head = head.left
+                else:
+                    return False
+        return True
+
+    def inorder(self, vals=None):
+        if self.head is None:
+            self.raise_exception('List is empty')
 
 
 tree = BinarySearchTree()
 
 tree.add_head(Node(10))
 tree.add_node(Node(12))
-tree.add_node(Node(16))
+tree.add_node(Node(13))
+tree.add_node(Node(14))
+tree.add_node(Node(9))
+tree.add_node(Node(8))
 tree.add_node(Node(7))
-tree.add_node(Node(3))
-tree.add_node(Node(5))
+
+print(tree.get_min())
+print(tree.get_max())
+
+print(tree.exists(10))
